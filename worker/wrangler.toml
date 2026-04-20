@@ -1,0 +1,14 @@
+name = "rlrosenbaum-contact"
+main = "index.js"
+compatibility_date = "2024-01-01"
+workers_dev = true
+routes = [
+  { pattern = "contact.rlrosenbaum.com/*", zone_name = "rlrosenbaum.com" }
+]
+
+[vars]
+TO_EMAIL = "ryan@swimpass.app"
+FROM_EMAIL = "noreply@swimpass.app"
+
+# Resend API key stored as secret:
+#   wrangler secret put RESEND_API_KEY
