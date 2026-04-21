@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
         .then(response => {
           if (response.ok) {
-            btnSpan.textContent = 'Message Sent — Thank You';
+            btnSpan.textContent = 'Thank you — his family reads every message';
             btn.style.background = '#4a7c59';
             btn.style.opacity = '1';
             form.reset();
