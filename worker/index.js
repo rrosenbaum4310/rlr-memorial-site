@@ -45,6 +45,25 @@ export default {
         );
       }
 
+      // Verify Cloudflare Turnstile token
+      const turnstileToken = formData.get('cf-turnstile-response') || '';
+      const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          secret: env.TURNSTILE_SECRET_KEY,
+          response: turnstileToken,
+          remoteip: request.headers.get('CF-Connecting-IP'),
+        }),
+      });
+      const turnstileResult = await turnstileRes.json();
+      if (!turnstileResult.success) {
+        return Response.json(
+          { error: 'Spam check failed. Please try again.' },
+          { status: 403, headers: corsHeaders }
+        );
+      }
+
       const reasonLabels = {
         remembrance: 'Sharing a Remembrance',
         'previous-case': 'Previous Case Inquiry',

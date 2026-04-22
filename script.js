@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.background = '#4a7c59';
             btn.style.opacity = '1';
             form.reset();
+            if (typeof turnstile !== 'undefined') turnstile.reset();
             setTimeout(() => {
               btnSpan.textContent = originalText;
               btn.style.background = '';
