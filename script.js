@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.opacity = '1';
             form.reset();
             if (typeof turnstile !== 'undefined') turnstile.reset();
+            if (typeof gtag === 'function') gtag('event', 'memorial_message_sent');
             setTimeout(() => {
               btnSpan.textContent = originalText;
               btn.style.background = '';
