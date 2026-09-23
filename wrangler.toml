@@ -1,0 +1,10 @@
+# rlrosenbaum.com as a Cloudflare Worker with static assets (replaces the nginx container on Coolify).
+# Deploy: ./deploy-cf.sh  (copies the web assets into dist/ and runs `wrangler deploy`).
+name = "rlr-memorial-site"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[assets]
+directory = "./dist"
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-application"
