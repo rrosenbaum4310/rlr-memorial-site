@@ -4,6 +4,12 @@ name = "rlr-memorial-site"
 compatibility_date = "2026-09-01"
 workers_dev = true
 
+# Take over the hostnames at the edge (the proxied DNS records stay as they are; rollback = remove these routes).
+routes = [
+  { pattern = "rlrosenbaum.com/*", zone_name = "rlrosenbaum.com" },
+  { pattern = "www.rlrosenbaum.com/*", zone_name = "rlrosenbaum.com" },
+]
+
 [assets]
 directory = "./dist"
 html_handling = "auto-trailing-slash"
